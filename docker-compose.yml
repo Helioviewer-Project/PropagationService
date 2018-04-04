@@ -1,0 +1,11 @@
+version: '3.2'
+services:
+  swhv-propagation:
+    build:
+      context: .
+      dockerfile: swhv-propagation/Dockerfile
+    container_name: swhv-propagation
+    hostname: swhv-propagation
+    ports: 
+      - 7790:7789
+    command: propagation_service.py
