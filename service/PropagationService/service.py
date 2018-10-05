@@ -32,7 +32,7 @@ def propagation_service(fcgi=True):
         PropagationService.event_manager.add_listener('method_return_object',
                                                       _on_method_return_object)
 
-    tns = 'sidc.service.propagation'
+    tns = 'swhv.service.propagation'
 
     json = Application([PropagationService], tns=tns,
                        in_protocol=JsonDocument(validator='soft'),
