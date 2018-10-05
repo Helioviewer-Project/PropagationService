@@ -4,8 +4,8 @@ logging.basicConfig(level=logging.INFO)
 
 from spyne.application import Application
 from spyne.decorator import rpc
-from spyne.service import ServiceBase
-from spyne.model.primitive import AnyDict, Integer, Float, String
+from spyne.service import Service
+from spyne.model.primitive import Integer
 from spyne import Array
 
 from spyne.protocol.json import JsonDocument
