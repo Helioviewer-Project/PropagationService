@@ -13,14 +13,26 @@ from spyne.protocol.json import JsonDocument
 from spyne.server.wsgi import WsgiApplication
 
 from spyne.util.six.moves.urllib.request import Request, urlopen
-from spyne.util.six.moves.urllib.error import HTTPError
+
+import json
 
 #####
 
 server = 'http://127.0.0.1:7789/json/position?'
+
+fixed_speed = 1000.
 observer = 'SUN'
 target = 'SOHO'
 ref = 'HEEQ'
+
+def add_speed(response):
+    ret = json.load(response)
+    result = ret['result']
+
+    for item in result:
+        for v in item.values():
+            v.append(fixed_speed)
+    return ret
 
 class PropagationService(Service):
     @srpc(Unicode(min_occurs=1), Unicode(min_occurs=1),
@@ -31,17 +43,10 @@ class PropagationService(Service):
         deltat_req = '' if deltat is None else '&deltat=' + deltat
 
         url = server + 'utc=' + utc + '&observer=' + observer + '&target=' + target + '&ref=' + ref + utc_end_req + deltat_req
+
         request = Request(url)
-        code = 200
-
-        try:
-            response = urlopen(request)
-            in_string = response.read().decode('utf-8')
-        except HTTPError as e:
-            code = e.code
-            in_string = e.read().decode('utf-8')
-
-        return {'geometry': in_string}
+        response = urlopen(request)
+        return add_speed(response)
 
 #####
 
