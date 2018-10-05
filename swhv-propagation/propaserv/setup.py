@@ -6,10 +6,10 @@ kwargs = {'name': 'propaserv',
           'author': 'SWHV ROB',
           'author_email': 'swhv@oma.be',
           'packages': ['propaserv'],
-          'scripts': ['bin/propagation_service.py', 'bin/propagation_service.fcgi'],
+          'scripts': ['bin/propagation_service', 'bin/propagation_service.fcgi'],
           'license': 'MIT'}
 
-instllrqrs = ['dill', 'lxml', 'msgpack-python', 'spyne', 'sortedcontainers', 'flup6', 'Werkzeug']
+instllrqrs = ['lxml', 'spyne>=2.13.2-alpha', 'flup6', 'Werkzeug']
 kwargs['install_requires'] = instllrqrs
 
 clssfrs = ["Programming Language :: Python",
