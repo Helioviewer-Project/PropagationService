@@ -9,7 +9,7 @@ from werkzeug.serving import run_simple
 # stop stupid reverse DNS lookup / not sure if still needed
 # __import__('BaseHTTPServer').BaseHTTPRequestHandler.address_string = lambda x:x.client_address[0]
 
-from propaserv import service
+from PropagationService import service
 
 #####
 # http://pylonsbook.com/en/1.1/the-web-server-gateway-interface-wsgi.html#altering-the-response
@@ -60,4 +60,4 @@ class GzipMiddleware(object):
 #####
 
 gzip_app = GzipMiddleware(service.propagation_service(False), compresslevel=1)
-run_simple('0.0.0.0', 7789, gzip_app, threaded=True)
+run_simple('0.0.0.0', 7790, gzip_app, threaded=True)

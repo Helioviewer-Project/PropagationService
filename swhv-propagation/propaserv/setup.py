@@ -1,11 +1,11 @@
 from setuptools import setup
 
-kwargs = {'name': 'propaserv',
-          'description': 'Solar Propagation Service',
+kwargs = {'name': 'PropagationService',
+          'description': 'Solar System Propagation Service',
           'long_description': open('README.md').read(),
           'author': 'SWHV ROB',
           'author_email': 'swhv@oma.be',
-          'packages': ['propaserv'],
+          'packages': ['PropagationService'],
           'scripts': ['bin/propagation_service', 'bin/propagation_service.fcgi'],
           'license': 'MIT'}
 
